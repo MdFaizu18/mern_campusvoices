@@ -5,10 +5,8 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "setup-project": "npm i && cd client && npm i",
-    "server": "nodemon server",
-    "client": "cd client && npm run dev",
-    "dev": "concurrently --kill-others-on-fail \" npm run server\" \" npm run client\""
+    "start": "node index.js",
+    "vercel-build": "npm install && npm run build"
   },
   "author": "Md Faizu",
   "license": "ISC",
