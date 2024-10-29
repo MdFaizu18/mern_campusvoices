@@ -81,7 +81,7 @@ const RatingModal = ({ isOpen, onClose, staff, user }) => {
     };
 
     if (!staff) return null;
-
+    const marginTopStyle = window.innerWidth <= 768 ? '-200%' : '-20%';
     return (
         <AnimatePresence>
             {isOpen && (
@@ -89,6 +89,7 @@ const RatingModal = ({ isOpen, onClose, staff, user }) => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
+                    style={{ marginTop: marginTopStyle }}
                     className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex items-center justify-center z-50"
                 >
                     <motion.div
