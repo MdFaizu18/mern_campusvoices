@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --modal-margin-top: 0%;
+}
+
+@media (max-width: 640px) {
+
+    /* For small screens (e.g., mobile devices) */
+    :root {
+        --modal-margin-top: -100%;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background: linear-gradient(to bottom, #8b5cf6, #3b82f6);
+    transition: all 0.5s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: red,
+}
+
+::-webkit-scrollbar-track {
+    background: #f9f9f9;
+}
