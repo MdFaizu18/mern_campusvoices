@@ -1,12 +1,18 @@
 import { useState, useRef } from 'react';
-import { Camera, MessageCircle, X } from 'lucide-react'; // Assuming these icons are being used
+import { Camera, MessageCircle, X } from 'lucide-react';
 
-const ProfileComponent = ({ user, profileImage, handleImageUpload, triggerFileInput, loading }) => {
+const ProfileComponent = ({ user, profileImage, handleImageUpload, loading }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const fileInputRef = useRef(null);
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
+
+    const triggerFileInput = () => {
+        if (fileInputRef.current) {
+            fileInputRef.current.click();
+        }
+    };
 
     return (
         <div className="relative mb-12">
@@ -54,12 +60,7 @@ const ProfileComponent = ({ user, profileImage, handleImageUpload, triggerFileIn
             {/* Modal for displaying the image */}
             {isModalOpen && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-                    <div
-                        className="relative bg-white p-4 rounded-lg shadow-lg transform -translate-y-1/2"
-                        style={{
-                            marginTop: 'var(--modal-margin-top)',
-                        }}
-                    >
+                    <div className="relative bg-white p-4 rounded-lg shadow-lg transform -translate-y-1/2">
                         <button
                             className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
                             onClick={closeModal}
@@ -74,7 +75,6 @@ const ProfileComponent = ({ user, profileImage, handleImageUpload, triggerFileIn
                     </div>
                 </div>
             )}
-
         </div>
     );
 };
