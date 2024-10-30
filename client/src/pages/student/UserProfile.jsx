@@ -77,7 +77,7 @@ export default function UserProfile() {
         email: userData.email,
         phone: userData.mobileNo,
         department: userData.department,
-        year: "3rd Year",
+
         location: "Please Upload image below than 5 MB",
         feedsSent: stats.data.feedsTotal,
         averageRating: 4.8,
@@ -244,7 +244,7 @@ export default function UserProfile() {
                                     />
                                 </div>
                             </div>
-                            <div>
+                            {/* <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">
                                     Year
                                 </label>
@@ -259,7 +259,7 @@ export default function UserProfile() {
                                         className="flex-1 block w-full px-2 py-2 rounded-none rounded-r-md sm:text-sm border-gray-300 focus:ring-indigo-500 focus:border-indigo-500"
                                     />
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="mt-4 flex justify-end">
                             <button
@@ -285,7 +285,7 @@ export default function UserProfile() {
                                     className="mt-1 block w-full px-2 py-2 rounded-md sm:text-sm border-gray-300 bg-gray-50"
                                 />
                             </div>
-                            <div>
+                            {/* <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">
                                     Enrollment Date
                                 </label>
@@ -300,7 +300,7 @@ export default function UserProfile() {
                                         className="flex-1 block w-full px-2 py-2 rounded-none rounded-r-md sm:text-sm border-gray-300 bg-gray-50"
                                     />
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </ProfileSection>
 
