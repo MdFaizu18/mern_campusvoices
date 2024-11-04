@@ -1,12 +1,16 @@
 {
-  "name": "mui-campus-voices",
+  "name": "campusvoices",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "vercel-build": "npm install "
+    "vercel-build": "npm install ",
+    "setup-project": "npm i && cd client && npm i",
+    "server": "nodemon server",
+    "client": "cd client && npm run dev",
+    "dev": "concurrently --kill-others-on-fail \" npm run server\" \" npm run client\""
   },
   "author": "Md Faizu",
   "license": "ISC",

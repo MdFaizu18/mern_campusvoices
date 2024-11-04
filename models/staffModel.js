@@ -8,8 +8,16 @@ const staffSchema = new mongoose.Schema({
     departmentCode: String,
     staffCode: String,
     email: String,
+    role: {
+        type: String,
+        default: "staff",
+    },
+    password:String,
     phoneNumber: String,
     jobPosition: String,
-    profileImage: String
+    profileImage: {
+        type:String,
+        default:""
+    }
 });
 export default mongoose.model("Staff", staffSchema);

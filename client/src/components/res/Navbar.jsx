@@ -47,11 +47,11 @@ const Navbar = () => {
         if (error.response && error.response.status === 403) {
           // throw new Error('Access Denied! You are not authorized to access this page.');
           toast.error("Please Login !!!")
-          return redirect('/')
+          navigate('/')
         } else {
           // toast.error("Error occurred while fetching data");
           toast.error("Please Login !!")
-          return redirect('/')
+          navigate('/')
         }
       } finally {
         setLoading(false); // Stop loading

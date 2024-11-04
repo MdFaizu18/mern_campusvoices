@@ -14,10 +14,10 @@ export const loader = async () => {
         return data;
     } catch (error) {
         if (error.response && error.response.status === 403) {
-            toast.error("Please Login !!")
+            // toast.error("Please Login !!")
             return redirect('/')
         } else {
-            toast.error("Please Login !!")
+            // toast.error("Please Login !!")
             return redirect('/')
         }
     }
@@ -31,7 +31,8 @@ export default function MainDashboardStudent() {
     const [isDisabled, setIsDisabled] = useState(false);
     const [showMoreFeedback, setShowMoreFeedback] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [department,setDepartment]=useState(data.data.user.department);
+    const [department, setDepartment] = useState('');
+    const [userId, setUserId] = useState('');
 
     const navigate = useNavigate();
 
@@ -46,7 +47,12 @@ export default function MainDashboardStudent() {
         }, 300);
     };
 
-    const userId = data.data.user._id;
+    useEffect(() => {
+        if (data && data.data && data.data.user) {
+            setDepartment(data.data.user.department);
+            setUserId(data.data.user._id);
+        }
+    }, [data]);
 
     useEffect(() => {
         // Retrieve and parse stored rating submissions

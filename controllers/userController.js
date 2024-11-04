@@ -3,6 +3,7 @@ import cloudinary from "../config/cloudinaryConfig.js";
 import userModel from "../models/userModel.js"
 import mongoose from 'mongoose';
 import { comparePassword, hassPassword } from '../utils/passwordUtils.js';
+import staffModel from "../models/staffModel.js";
 // Example for Node.js/Express with JWT
 
 export const getCurrentUser = async (req, res) => {
@@ -106,12 +107,19 @@ export const updateUser = async (req, res) => {
 
 export const getUserRole = async (req, res) => {
     const { email: userEmail } = req.params;
-    const user = await userModel.findOne({ email: userEmail });
+    let user = await userModel.findOne({ email: userEmail });
+    // If no user is found in userModel, check in the staffModel
     if (!user) {
-        return res.status(404).json({ msg: `no user  with email ${userEmail} ` });
+        user = await staffModel.findOne({ email: userEmail });
+
+        // If still no user is found, return a 404 error
+        if (!user) {
+            return res.status(404).json({ msg: `No user with email ${userEmail} found` });
+        }
     }
     res.status(200).json({ user });
 };
+
 export const changePassword = async (req, res) => {
     const { oldPassword, newPassword, password } = req.body;
 
@@ -163,7 +171,7 @@ export const changePassword = async (req, res) => {
     }
 };
 
-
+// to getting current profile img of the user 
 export const getImgUser = async (req, res) => {
     const { id } = req.params;
     try {
@@ -177,6 +185,20 @@ export const getImgUser = async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ msg: 'Error updating password' });
+    }
+}
+
+// to get the current staff details 
+export const getCurrentStaff = async (req, res) => {
+    if (!req.user) {
+        return res.status(403).json({ message: 'Access denied. Staffs only.' });
+    }
+    try {
+        const user = await staffModel.findOne({ _id: req.user.userId }).select('-password');
+        res.status(200).json({ user: user });
+
+    } catch (error) {
+        res.status(500).json({ msg: 'error in current user', error })
     }
 }
 

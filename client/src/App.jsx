@@ -25,6 +25,9 @@ import StarRatingsReview from './pages/admin/StarRatingsReview';
 import AdminLogin from './pages/AdminLoginPage';
 import AddFeaturePage from './pages/admin/AddFeaturePage';
 import NetworkAwareComponent from './pages/network/NetworkAwareComponent';
+import StaffLoginPage from './pages/staffs/StaffLoginPage';
+import StaffDashboard from './pages/staffs/StaffDashboard';
+import StaffRegistrationPage from './pages/staffs/StaffRegisterPage';
 import ITSupportContact from './pages/ITSupportContact';
 import { NetworkStatusProvider } from './pages/network/NetworkStatusProvider';
 
@@ -32,6 +35,8 @@ import { NetworkStatusProvider } from './pages/network/NetworkStatusProvider';
 import { action as loginAction } from './pages/LoginPage';
 import { action as adminLoginAction } from './pages/AdminLoginPage';
 import { action as registerAction } from './pages/RegisterPage';
+import { action as staffRegisterAction} from './pages/staffs/StaffRegisterPage'
+// import { action as staffLoginAction} from './pages/staffs/StaffLoginPage'
 // importing loaders 
 import { loader as userProfileLoader } from './pages/student/UserProfile';
 import { loader as stdDashboardLoader } from './pages/student/MainDashBoardStudent';
@@ -72,7 +77,20 @@ const router = createBrowserRouter([
       {
         path: '/redirect/reset-password/:token',
         element: <ResetPassword />,
-
+      },
+      {
+        path: '/register-staff',
+        element: <StaffRegistrationPage />,
+        action: staffRegisterAction
+      },
+      {
+        path: '/login-staff',
+        element: <StaffLoginPage />,
+        // action: staffLoginAction
+      },
+      {
+        path: '/staff-dashboard',
+        element: <StaffDashboard />,
       },
 
     ]
